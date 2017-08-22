@@ -14,7 +14,7 @@ See also: https://github.com/MrDroid/pam_imap
 Compiling
 ---------
 
-Debian install prerequisites: libpam0g-dev libssl-dev libgdbm-dev
+Debian install prerequisites: libpam0g-dev libssl-dev libgdbm-dev dh-autoreconf
 
 .. code-block:: console
 
