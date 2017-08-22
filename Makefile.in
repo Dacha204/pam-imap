@@ -31,7 +31,7 @@ OBJ=$(ISYNCLIB)/config.o $(ISYNCLIB)/imap.o \
 all: isync check_user $(PROG) 
 
 $(PROG): $(OBJ) 
-	$(CC) $(CFLAGS) $(CPPFLAGS) $(LDFLAGS) $(LIBS) $(DEFINE) -o $(PROG) $(OBJ) 
+	$(CC) $(CFLAGS) $(CPPFLAGS) $(LDFLAGS) $(LIBS) $(DEFINE) -o $(PROG) $(OBJ) -lssl -lcrypto -lgdbm -lcrypt
 
 pam_imap.o: pam_imap.c
 	$(CC) $(CFLAGS) $(CPPFLAGS) $(DEFINE) -c pam_imap.c
@@ -64,7 +64,7 @@ isync:
 	cd $(ISYNCLIB) ; make
  
 check_user: check_user.c
-	$(CC) $(CFLAGS) -lpam -lpam_misc check_user.c -o check_user
+	$(CC) $(CFLAGS) -lpam -lpam_misc check_user.c -o check_user -lpam -lpam_misc
 install:
 	make all
 	install -m 755 $(PROG) $(INSTALL_DIR)
