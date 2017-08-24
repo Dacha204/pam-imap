@@ -1,6 +1,11 @@
 
 This is just a simple log of the changes made to this code. 
 Changes made by Cal Heldenbrand unless otherwise noted.
+As of 0.3.10u
+
+-- Fixes by Dalibor Aleksic to make it compile & link on Ubuntu 16.04.1
+
+-- Cleanups
 
 As of 0.3.9
 
