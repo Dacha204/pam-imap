@@ -201,14 +201,20 @@ PAM_EXTERN int pam_sm_authenticate (pam_handle_t * pamh,
 	if ( argc == 0 )  /* called w/o any args */
 	{
 		/* assume some general paths */
-		if ( (tempfd = open("/etc/pam.d/pam_imap.conf", O_RDONLY) ) != -1 )
+		if ( (tempfd = open("/etc/pam_imap.conf", O_RDONLY) ) != -1 )
 		{
-			strcpy(config_file, "/etc/pam.d/pam_imap.conf");
+			strcpy(config_file, "/etc/pam_imap.conf");
 			close(tempfd);
 		}
 		else if ( (tempfd = open("/usr/local/etc/pam_imap.conf", O_RDONLY) ) != -1 )
 		{
 			strcpy(config_file, "/usr/local/etc/pam_imap.conf");
+			close(tempfd);
+		}
+		//legacy check
+		else if ( (tempfd = open("/etc/pam.d/pam_imap.conf", O_RDONLY) ) != -1 )
+		{
+			strcpy(config_file, "/etc/pam.d/pam_imap.conf");
 			close(tempfd);
 		}
 		/* do we really need any more than this? */
